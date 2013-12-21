@@ -1,0 +1,19 @@
+{
+	"name": "Show IMDB ratings",
+	"description": "Show IMDB ratings",
+	"version": "1.0",
+	"manifest_version": 2,
+	"browser_action": {
+		"name": "Show IMDB ratings",
+		"icons": ["icon48.png"],
+		"default_icon": "icon48.png"
+	  },
+	"content_scripts": [ {
+		"js": [ "jquery-2.0.3.min.js", "showrate.js" ],
+		"matches": ["http://www.imdb.com/name/*"]
+	}],
+	"permissions": [
+		"http://www.imdb.com/"
+    ],
+	"web_accessible_resources": ["jquery-2.0.3.min.map"]
+}
