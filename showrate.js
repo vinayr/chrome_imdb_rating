@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	var title, get_url, rating, arr;
+	var title, get_url, rating, arr, color;
 	var url = "http://www.imdb.com";
 
 	$(".filmo-row").each(function () {
@@ -15,9 +15,14 @@ $(document).ready(function () {
 			url : myurl,
 			success : function (data) {
 				rating = $.trim($(data).find('.star-box-giga-star').first().text());
-				//console.log("adsdfsd " + rating);
-				if(rating == '') rating = '0.0';
-				obj.find('.year_column').append('&nbsp;&nbsp;<span style="color:blue;font-weight:bold;">' + rating + '</span>');
+				if(rating == '') 
+					rating = '0.0';
+				rating = parseFloat(rating).toFixed(1);
+				if (rating >= 7.5) 
+					color = 'red';
+				else 
+					color = 'blue';
+				obj.find('.year_column').append('&nbsp;&nbsp;<span style="color:'+color+';font-weight:bold;">' + rating + '</span>');
 			}
 		});
 	}
