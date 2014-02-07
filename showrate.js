@@ -52,8 +52,14 @@ $(document).ready(function () {
 				if(rating == '') 
 					rating = '0.0';
 				rating = parseFloat(rating).toFixed(1);
-				if (rating >= 7.5) 
-					color = 'red';
+				
+				if (rating >= 7.5) {
+					//check if tv series
+					var content = obj.clone().children().remove().end().text();
+					//console.log('asdf: '+content);
+					if(content.indexOf('(') === -1)
+						color = 'red';
+				}
 				else 
 					color = 'blue';
 				obj.find('.year_column').append('&nbsp;&nbsp;<span style="color:'+color+';font-weight:bold;">' + rating + '</span>');
