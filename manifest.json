@@ -1,7 +1,7 @@
 {
 	"name": "Show IMDB ratings",
 	"description": "Show IMDB ratings",
-	"version": "1.2",
+	"version": "1.3",
 	"manifest_version": 2,
 	"browser_action": {
 		"name": "Show IMDB ratings",

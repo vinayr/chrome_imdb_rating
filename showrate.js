@@ -34,7 +34,8 @@ $(document).ready(function () {
 			type : "GET",
 			url : myurl,
 			success : function (data) {
-				rating = $.trim($(data).find('.star-box-giga-star').first().text());
+				//rating = $.trim($(data).find('.star-box-giga-star').first().text());
+				rating = $(data).find("span[itemprop='ratingValue']").first().text();
 				if(rating == '') 
 					rating = '0.0';
 				rating = parseFloat(rating).toFixed(1);
@@ -48,7 +49,8 @@ $(document).ready(function () {
 			type : "GET",
 			url : myurl,
 			success : function (data) {
-				rating = $.trim($(data).find('.star-box-giga-star').first().text());
+				//rating = $.trim($(data).find('.star-box-giga-star').first().text());
+				rating = $(data).find("span[itemprop='ratingValue']").first().text();
 				if(rating == '') 
 					rating = '0.0';
 				rating = parseFloat(rating).toFixed(1);
