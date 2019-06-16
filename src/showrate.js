@@ -1,13 +1,13 @@
 // prettier-ignore
 
-$(document).ready(function () {
+$(document).ready(function() {
   const baseUrl = "https://www.imdb.com";
   const blacklist = [ "TV", "Short", "Video", "Documentary" ];
 
   // For search window
   const target = document.querySelector("#navbar-suggestionsearch");
   const observer = new window.WebKitMutationObserver(function(mutations) {
-    $(".poster").each(function () {
+    $(".poster").each(function() {
       const link = $(this).attr("href");
       // console.log("link", link);
       const titlePath = link.split("?")[0];
@@ -16,12 +16,12 @@ $(document).ready(function () {
         showRatingsInSearch($(this), movieUrl);
       }
     });
-	});
+  });
   observer.observe(target, { subtree: false, characterData: true, childList: true });
 
   // For actor pages
   if ($(".filmo-row")[0]) {
-    $(".filmo-row").each(function () {
+    $(".filmo-row").each(function() {
       const link = $(this).find("a:first").attr("href");
       const titlePath = link.split("?")[0];
       const movieUrl = baseUrl + titlePath;
@@ -30,7 +30,7 @@ $(document).ready(function () {
   }
 
   function showRatingsInSearch(obj, url) {
-    $.get(url, function (data) {
+    $.get(url, function(data) {
       let rating = $(data).find("span[itemprop='ratingValue']").first().text();
       if (!rating) rating = "0.0";
       rating = parseFloat(rating).toFixed(1);
@@ -39,7 +39,7 @@ $(document).ready(function () {
   }
 
   function showRatingsInPage(obj, url) {
-    $.get(url, function (data) {
+    $.get(url, function(data) {
       let rating = $(data).find("span[itemprop='ratingValue']").first().text();
       if (!rating) rating = "0.0";
       rating = parseFloat(rating).toFixed(1);
