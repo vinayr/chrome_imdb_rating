@@ -5,7 +5,8 @@ $(document).ready(function() {
   const blacklist = [ "TV", "Short", "Video", "Documentary" ];
 
   // For search window
-  const target = document.querySelector("#navbar-suggestionsearch");
+  /*
+  const target = document.querySelector("#suggestion-search-container");
   const observer = new window.WebKitMutationObserver(function(mutations) {
     $(".poster").each(function() {
       const link = $(this).attr("href");
@@ -18,6 +19,7 @@ $(document).ready(function() {
     });
   });
   observer.observe(target, { subtree: false, characterData: true, childList: true });
+  */
 
   // For actor pages
   if ($(".filmo-row")[0]) {

@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "1.5",
+  "version": "1.6",
   "name": "Show IMDB ratings",
   "short_name": "IMDB ratings",
   "description": "Show IMDB ratings",
