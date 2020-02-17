@@ -5,10 +5,9 @@ $(document).ready(function() {
   const blacklist = [ "TV", "Short", "Video", "Documentary" ];
 
   // For search window
-  /*
-  const target = document.querySelector("#suggestion-search-container");
+  const target = document.querySelector(".react-autosuggest__container");
   const observer = new window.WebKitMutationObserver(function(mutations) {
-    $(".poster").each(function() {
+    $("a[data-testid='search-result--const']").each(function() {
       const link = $(this).attr("href");
       // console.log("link", link);
       const titlePath = link.split("?")[0];
@@ -18,8 +17,7 @@ $(document).ready(function() {
       }
     });
   });
-  observer.observe(target, { subtree: false, characterData: true, childList: true });
-  */
+  observer.observe(target, { subtree: false, attributes: true, childList: true });
 
   // For actor pages
   if ($(".filmo-row")[0]) {
@@ -36,7 +34,7 @@ $(document).ready(function() {
       let rating = $(data).find("span[itemprop='ratingValue']").first().text();
       if (!rating) rating = "0.0";
       rating = parseFloat(rating).toFixed(1);
-      obj.find(".extra").append(`&nbsp;&nbsp;<span style="color:green;font-weight:bold;">${rating}</span>`);
+      obj.append(`<span>${rating}</span>`);
     });
   }
 
