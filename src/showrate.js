@@ -21,11 +21,14 @@ $(document).ready(function() {
 
   // For actor pages
   if ($(".filmo-row")[0]) {
+    let time = 100;
     $(".filmo-row").each(function() {
       const link = $(this).find("a:first").attr("href");
       const titlePath = link.split("?")[0];
       const movieUrl = baseUrl + titlePath;
-      showRatingsInPage($(this), movieUrl);
+      // showRatingsInPage($(this), movieUrl);
+      setTimeout(() => showRatingsInPage($(this), movieUrl), time);
+      time += 100;
     });
   }
 
