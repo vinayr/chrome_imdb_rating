@@ -4,18 +4,20 @@ $(document).ready(function () {
 
   // For search window
   const target = document.querySelector(".react-autosuggest__container");
-  const observer = new window.WebKitMutationObserver(function (mutations) {
-    $("a[data-testid='search-result--const']").each(function () {
-      const link = $(this).attr("href");
-      // console.log("link", link);
-      const titlePath = link.split("?")[0];
-      if (titlePath.split("/")[1] === "title") {
-        const movieUrl = baseUrl + titlePath;
-        showRatingsInSearch($(this), movieUrl);
-      }
+  if (target) {
+    const observer = new window.WebKitMutationObserver(function (mutations) {
+      $("a[data-testid='search-result--const']").each(function () {
+        const link = $(this).attr("href");
+        // console.log("link", link);
+        const titlePath = link.split("?")[0];
+        if (titlePath.split("/")[1] === "title") {
+          const movieUrl = baseUrl + titlePath;
+          showRatingsInSearch($(this), movieUrl);
+        }
+      });
     });
-  });
-  observer.observe(target, { subtree: false, attributes: true, childList: true });
+    observer.observe(target, { subtree: false, attributes: true, childList: true });
+  }
 
   // For actor pages
   if ($(".filmo-row")[0]) {
@@ -32,7 +34,7 @@ $(document).ready(function () {
 
   function showRatingsInSearch(obj, url) {
     $.get(url, function (data) {
-      let rating = $(data).find("span[class^=AggregateRatingButton__RatingScore]").first().text();
+      let rating = $(data).find("div[data-testid='hero-rating-bar__aggregate-rating__score'] span").first().text();
       if (!rating) rating = "0.0";
       rating = parseFloat(rating).toFixed(1);
       obj.append(`<span>${rating}</span>`);
@@ -41,7 +43,7 @@ $(document).ready(function () {
 
   function showRatingsInPage(obj, url) {
     $.get(url, function (data) {
-      let rating = $(data).find("span[class^=AggregateRatingButton__RatingScore]").first().text();
+      let rating = $(data).find("div[data-testid='hero-rating-bar__aggregate-rating__score'] span").first().text();
       if (!rating) rating = "0.0";
       rating = parseFloat(rating).toFixed(1);
 
